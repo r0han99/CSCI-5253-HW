@@ -32,6 +32,22 @@ docker run -it pandas-pipeline:0.1 --read --transform dob
 
 The --read and --transform ( dob ) flag and options respectively are native to the data-pipeline script that is run at the entrypoint of the docker image, without these flags the script does nothing. 
 
+*Expected Output from the docker run*
+
+```shell
+Transformation
+- Dropping redundancies
+- Converting to Datetime objects
+- Individualising Month, Day and Year to different columns
+- Transformation Done!
+- Saving Transformed data. transformed data is saved as /app/transformed-data.csv.
+-------------------------------------------------------
+Job Completed.
+
+```
+
+
+
 ---
 
 
