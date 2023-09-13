@@ -12,7 +12,7 @@ echo "---------------"
 echo "Running the docker image and pipeline"
 echo ""
 
-docker run -it pandas-pipeline:0.1 --read https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/people/people-1000.csv --transform dob
+docker run -it pandas-pipeline:0.1 --read https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/people/people-1000.csv --target target.csv
 
 echo ""
 echo "---------------"

@@ -27,7 +27,7 @@ docker build -t pandas-pipeline:0.1 .
 ##### Running Docker Image
 
 ```bash
-docker run -it pandas-pipeline:0.1 --read csv-source --transform dob
+docker run -it pandas-pipeline:0.1 --read csv-source --target target.csv
 ```
 
 The --read (csv source) and --transform ( dob ) options respectively are native to the data-pipeline script that is run at the entrypoint of the docker image, without these flags the script does nothing. 
@@ -47,7 +47,7 @@ Transformation
 - Converting to Datetime objects
 - Individualising Month, Day and Year to different columns
 - Transformation Done!
-- Saving Transformed data. transformed data is saved as /app/transformed-data.csv.
+- Saving Transformed data. transformed data is saved as /app/{target}.csv.
 -------------------------------------------------------
 Job Completed.
 
