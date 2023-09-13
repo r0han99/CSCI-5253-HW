@@ -31,7 +31,14 @@ def transformed(data):
     time.sleep(1)
     print('- Transformation Done!')
     print('- Saving Transformed data. transformed data is saved as /app/transformed-data.csv.')
-    data.to_csv('/app/transformed-data.csv',index=False)
+    
+    # try except to handle testing in the host environment
+    try:
+        data.to_csv('/app/transformed-data.csv',index=False)
+    except OSError:
+        print()
+        print("Oh! We're in the Host Environment!, saving locally as transformed-data.csv")
+        data.to_csv('transformed-data.csv',index=False) 
 
     # data.to_csv('transformed-data.csv',index=False)
     # print("- Modified data is saved as transformed-data.csv")
@@ -52,13 +59,16 @@ def main(read_flag, transformation):
 
         transformed(data)
 
+    else:
+
+        print('No functionality detected. do python data-pipeline.py --help for manual.')
 
 
 
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Process a CSV file with transformations and save the results.")
-    parser.add_argument("--read", action="store_true", help="Flag to indicate reading data from the input CSV file")
+    parser.add_argument("--read", help="Reads csv file source from the terminal")
     parser.add_argument("--transform", help="Transformation option (example/custom)")
     
 

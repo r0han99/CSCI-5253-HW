@@ -27,10 +27,17 @@ docker build -t pandas-pipeline:0.1 .
 ##### Running Docker Image
 
 ```bash
-docker run -it pandas-pipeline:0.1 --read --transform dob
+docker run -it pandas-pipeline:0.1 --read csv-source --transform dob
 ```
 
-The --read and --transform ( dob ) flag and options respectively are native to the data-pipeline script that is run at the entrypoint of the docker image, without these flags the script does nothing. 
+The --read (csv source) and --transform ( dob ) options respectively are native to the data-pipeline script that is run at the entrypoint of the docker image, without these flags the script does nothing. 
+
+(or) Alternatively do, 
+
+```bash
+chmod +x instructions.sh
+./intructions.sh
+```
 
 *Expected Output from the docker run*
 
