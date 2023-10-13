@@ -1,9 +1,9 @@
-FROM python:3.8
+FROM python:3.9.1
 
 WORKDIR /app
 
-COPY data-pipeline.py data-pipeline_copy.py
+COPY pipeline_v2.py pipeline_v2.py
 
-RUN pip install pandas 
+RUN pip install pandas sqlalchemy psycopg2
 
-ENTRYPOINT [ "python", "data-pipeline_copy.py" ]
+ENTRYPOINT [ "python", "pipeline_v2.py" ]
