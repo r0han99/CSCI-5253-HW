@@ -44,8 +44,8 @@ class etl:
         
         print(labels[0])
 
-        data['datetime'] = pd.to_datetime(data['datetime']).dt.strftime('%d-%m-%Y')
-        data['date_of_birth'] = pd.to_datetime(data['date_of_birth']).dt.strftime('%d-%m-%Y')
+        # data['datetime'] = pd.to_datetime(data['datetime']).dt.strftime('%d-%m-%Y')
+        # data['date_of_birth'] = pd.to_datetime(data['date_of_birth']).dt.strftime('%d-%m-%Y')
 
         print(labels[1])
 
@@ -112,11 +112,34 @@ class etl:
             'Outcome_Type'
         ]
 
+        animal_sql_cols = [column.lower() for column in animal_sql_cols]
+        outcome_sql_cols = [column.lower() for column in outcome_sql_cols]
+        outcomeevents_sql_cols = [column.lower() for column in outcomeevents_sql_cols]
+        fact_table_columns = [column.lower() for column in fact_table_columns]
+
+
 
         animal.columns = animal_sql_cols
         outcomes.columns = outcome_sql_cols
         outcome_events.columns = outcomeevents_sql_cols
         data.columns = fact_table_columns
+
+
+        # Correcting Duplication
+        animal.drop_duplicates(inplace=True)
+        outcomes.drop_duplicates(inplace=True)
+        outcome_events.drop_duplicates(inplace=True)
+        data.drop_duplicates(inplace=True)
+
+
+        outcomes = pd.DataFrame(pd.Series(outcomes['outcome_type'].unique(),name='outcome_type'))
+        outcomes['outcome_type_id'] = outcomes.index + 1 
+        outcomes = outcomes[['outcome_type_id','outcome_type']]
+        
+
+
+
+        
 
 
         print('Data Transformed.')
@@ -144,10 +167,10 @@ class etl:
 
         engine = create_engine(DATABASE_URL)
 
-        animal.to_sql('Animal', engine, if_exists='replace', index=False)
-        outcomes.to_sql('Outcome_Type', engine, if_exists='replace', index=False)
-        outcome_events.to_sql('Outcome_Event', engine, if_exists='replace', index=False)
-        fact_table.to_sql('Fact Table', engine, if_exists='replace', index=False)
+        animal.to_sql('animal', engine, if_exists='append', index=False)
+        outcomes.to_sql('outcome_type', engine, if_exists='append', index=False)
+        outcome_events.to_sql('outcome_event', engine, if_exists='append', index=False)
+        fact_table.to_sql('fact_table', engine, if_exists='replace', index=False)
 
         print('- Loading Data')
         print('--'*25)
@@ -168,6 +191,8 @@ if __name__ == '__main__':
 
     data = etl_obj.extract()
     transformed_data = etl_obj.transform(data) # returns transformed 
+
+    #print([df.head(2) for df in transformed_data[1:]])
 
     etl_obj.load(transformed_data) # takes transformed data
 

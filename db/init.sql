@@ -1,24 +1,39 @@
-CREATE TABLE Animal (
-    Animal_ID VARCHAR(255) PRIMARY KEY,
-    Breed VARCHAR(255),
-    Color VARCHAR(255),
-    Name VARCHAR(255),
-    Date_of_Birth DATE,
-    Animal_Type VARCHAR(255)
+CREATE TABLE animal (
+    animal_id VARCHAR(255) PRIMARY KEY,
+    breed VARCHAR(255),
+    color VARCHAR(255),
+    name VARCHAR(255),
+    date_of_birth DATE,
+    animal_type VARCHAR(255)
 );
 
-CREATE TABLE Outcome_Type (
-    Outcome_Type_ID INT PRIMARY KEY,
-    Outcome_Type VARCHAR(255) UNIQUE
+CREATE TABLE outcome_type (
+    outcome_type_id INT PRIMARY KEY,
+    outcome_type VARCHAR(255) UNIQUE
 );
 
-CREATE TABLE Outcome_Event (
-    Outcome_Event_ID INT PRIMARY KEY,
-    DateTime TIMESTAMP,
-    Sex_upon_Outcome VARCHAR(255),
-    Outcome_Subtype VARCHAR(255),
-    Animal_ID VARCHAR(255),
-    Outcome_Type_ID INT,
-    FOREIGN KEY (Animal_ID) REFERENCES Animal(Animal_ID),
-    FOREIGN KEY (Outcome_Type_ID) REFERENCES Outcome_Type(Outcome_Type_ID)
-); 
+CREATE TABLE outcome_event (
+    outcome_event_id INT PRIMARY KEY,
+    datetime TIMESTAMP,
+    sex_upon_outcome VARCHAR(255),
+    outcome_subtype VARCHAR(255),
+    animal_id VARCHAR(255),
+    outcome_type_id INT,
+    FOREIGN KEY (animal_id) REFERENCES Animal(animal_id),
+    FOREIGN KEY (outcome_type_id) REFERENCES Outcome_Type(outcome_type_id)
+);
+
+CREATE TABLE fact_table (
+    animal_id VARCHAR(255) NOT NULL,
+    breed VARCHAR(255),
+    color VARCHAR(255),
+    name VARCHAR(255),
+    date_of_birth DATE,
+    animal_type VARCHAR(255),
+    datetime TIMESTAMP,
+    sex_upon_outcome VARCHAR(255),
+    outcome_subtype VARCHAR(255),
+    outcome_type_id INT,
+    outcome_event_id INT PRIMARY KEY,
+    outcome_type VARCHAR(255)
+);
