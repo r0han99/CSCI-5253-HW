@@ -10,50 +10,19 @@ This repository holds all the future and current homework assignment files as pu
 
 ---
 
-### HW1 - Intructions to Run 
+### HW2 - Intructions to Run 
 
-##### Docker Instantiation
+##### Docker Compose Instantiation
 
 * Instantiate Docker
 
-Navigate inside the folder ( Make sure the Dockerfile is within the directory check with `ls` )
+Navigate inside the folder ( Make sure the `docker-compose.yml` is within the directory check with `ls` )
 
 In the **terminal/wsl**, run the following
 
 ```bash
-docker build -t pandas-pipeline:0.1 .
+docker compose up --build
 ```
-
-##### Running Docker Image
-
-```bash
-docker run -it pandas-pipeline:0.1 --read csv-source --target target.csv
-```
-
-The --read (csv source) and --transform ( dob ) options respectively are native to the data-pipeline script that is run at the entrypoint of the docker image, without these flags the script does nothing. 
-
-(or) Alternatively do, 
-
-```bash
-chmod +x instructions.sh
-./intructions.sh
-```
-
-*Expected Output from the docker run*
-
-```shell
-Transformation
-- Dropping redundancies
-- Converting to Datetime objects
-- Individualising Month, Day and Year to different columns
-- Transformation Done!
-- Saving Transformed data. transformed data is saved as /app/{target}.csv.
--------------------------------------------------------
-Job Completed.
-
-```
-
-
 
 ---
 
