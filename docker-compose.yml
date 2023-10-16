@@ -16,7 +16,7 @@ services:
     build: . 
     depends_on:
       - db
-    # command: "url.csv"
+    command: "https://data.austintexas.gov/resource/9t4d-g238.json"
 
 
 
