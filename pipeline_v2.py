@@ -36,20 +36,20 @@ class etl:
 
         return data
 
+   
+   
     def transform(self, data):
 
 
         print('Transforming Data.')
-        
+
         labels = ['- Converting datetime and date_of_birth to datetime objects and transforming them to the pattern mm/dd/yyyy',
-                  '- Filling NA.',
-                  '- Creating ID for Outcome type and Outcome Event Type.',
-                  '- Dividing into Entities']
-        
+                '- Filling NA.',
+                '- Creating ID for Outcome type and Outcome Event Type.',
+                '- Dividing into Entities']
+
         print(labels[0])
 
-        #data['datetime'] = pd.to_datetime(data['datetime']).dt.strftime('%d-%m-%Y')
-        #data['date_of_birth'] = pd.to_datetime(data['date_of_birth']).dt.strftime('%d-%m-%Y')
 
         print(labels[1])
 
@@ -65,30 +65,34 @@ class etl:
         # Dividing into entities 
         animal_table = ['animal_id', 'breed', 'color', 'name','date_of_birth','animal_type']
         outcome_table = ['outcome_type_id','outcome_type']
-        outcome_event = ['outcome_event_id','datetime','sex_upon_outcome','outcome_subtype','animal_id',]
-        data_colums_order = ['animal_id','breed','color',
-               'name','date_of_birth','animal_type','datetime',
-               'sex_upon_outcome','outcome_subtype',
-               'outcome_type_id','outcome_event_id','outcome_type']
+        outcome_event = ['outcome_event_id','datetime','sex_upon_outcome','outcome_subtype','animal_id','outcome_type', 'outcome_type_id']
+        data_colums_order = ['animal_id','outcome_type_id','outcome_event_id']
+
 
         # re-ordering
-        data = data[data_colums_order]
         animal = data[animal_table]
         outcomes = data[outcome_table]
         outcome_events = data[outcome_event]
+        data = data[data_colums_order]
+
 
         # Correcting Duplication
         animal.drop_duplicates(inplace=True)
         outcomes = pd.DataFrame(pd.Series(outcomes['outcome_type'].unique(),name='outcome_type'))
         outcomes['outcome_type_id'] = outcomes.index + 1 
         outcomes = outcomes[['outcome_type_id','outcome_type']]
-        
+
+        # Mapping Outcome_id to Outcome type
+        outcome_mapper = dict(zip(outcomes['outcome_type'],outcomes['outcome_type_id']))
+        outcome_events['outcome_type_id']= outcome_events['outcome_type'].map(outcome_mapper)
+        outcome_events = outcome_events.drop('outcome_type', axis=1)
 
 
         print('Data Transformed.')
         print('--'*25)
 
         return data, animal, outcomes, outcome_events
+
        
 
 
