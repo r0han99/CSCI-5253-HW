@@ -12,8 +12,6 @@ class etl:
         # Condition = test, testing conditons 
         # Condition = production, pulls the data from actual api endpoint
 
-
-        print('Etl Pipeline')
         print('--'*25)
         self.url = url
         self.condition = condition 
@@ -147,5 +145,40 @@ if __name__ == '__main__':
 
     etl_obj.load(transformed_data) # takes transformed data
 
+
+
+    art = '''
+
+
+        ,/  \.
+       |(    )|
+  \`-._:,\  /.;_,-'/
+   `.\_`\')(`/'_/,'
+       )/`.,'\(
+       |.    ,|
+       (@)  (@)
+        \`\ _(\'
+         \._'; `.___...---..________...------._
+          \   |   ,'   .  .     .       .     .`:.
+           \`.' .  .         .   .   .     .   . \\
+            `.       .   .  \  .   .   ..::: .    ::
+              \ .    .  .   ..::::::::''  ':    . ||
+               \   `. :. .:'            \  '. .   ;;
+                `._  \ ::: ;           _,\  :.  |/(
+                   `.`::: /--....--- \ `. :. :`\`   \'
+                    | |:':               \  `. :.\'  \'
+                    | |' ;                \  (\  .\'  (*)
+                    | |.:                  \  \`.  :
+                    |.| |                   ) /  :.|
+                    | |.|                  /./   | |
+                    |.| |                 / /    | |
+                    | | |                /./     |.|
+                    ;_;_;              ,'_/      ;_|
+                    -/_(              '--'      /,'   Extract-Transform-Load, v2.
+
+
+                                                                                                                                                                            
+        '''
+    print(art)
 
 

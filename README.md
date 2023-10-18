@@ -47,6 +47,36 @@ csci-5253-hw-etl-1  | - Connection Established.
 csci-5253-hw-etl-1  | - Loading Data
 csci-5253-hw-etl-1  | --------------------------------------------------
 csci-5253-hw-etl-1  | Data Load Completed.
+csci-5253-hw-etl-1  | 
+csci-5253-hw-etl-1  | 
+csci-5253-hw-etl-1  | 
+csci-5253-hw-etl-1  |         ,/  \.
+csci-5253-hw-etl-1  |        |(    )|
+csci-5253-hw-etl-1  |   \`-._:,\  /.;_,-'/
+csci-5253-hw-etl-1  |    `.\_`')(`/'_/,'
+csci-5253-hw-etl-1  |        )/`.,'\(
+csci-5253-hw-etl-1  |        |.    ,|
+csci-5253-hw-etl-1  |        (@)  (@)
+csci-5253-hw-etl-1  |         \`\ _('
+csci-5253-hw-etl-1  |          \._'; `.___...---..________...------._
+csci-5253-hw-etl-1  |           \   |   ,'   .  .     .       .     .`:.
+csci-5253-hw-etl-1  |            \`.' .  .         .   .   .     .   . \
+csci-5253-hw-etl-1  |             `.       .   .  \  .   .   ..::: .    ::
+csci-5253-hw-etl-1  |               \ .    .  .   ..::::::::''  ':    . ||
+csci-5253-hw-etl-1  |                \   `. :. .:'            \  '. .   ;;
+csci-5253-hw-etl-1  |                 `._  \ ::: ;           _,\  :.  |/(
+csci-5253-hw-etl-1  |                    `.`::: /--....--- \ `. :. :`\`   '
+csci-5253-hw-etl-1  |                     | |:':               \  `. :.'  '
+csci-5253-hw-etl-1  |                     | |' ;                \  (\  .'  (*)
+csci-5253-hw-etl-1  |                     | |.:                  \  \`.  :
+csci-5253-hw-etl-1  |                     |.| |                   ) /  :.|
+csci-5253-hw-etl-1  |                     | |.|                  /./   | |
+csci-5253-hw-etl-1  |                     |.| |                 / /    | |
+csci-5253-hw-etl-1  |                     | | |                /./     |.|
+csci-5253-hw-etl-1  |                     ;_;_;              ,'_/      ;_|
+csci-5253-hw-etl-1  |                     -/_(              '--'      /,'   Extract-Transform-Load, v2.
+csci-5253-hw-etl-1  | 
+
 
 ```
 
