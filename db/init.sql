@@ -25,9 +25,9 @@ CREATE TABLE outcome_event (
 
 CREATE TABLE fact_table (
     animal_id VARCHAR(255) NOT NULL,
+    outcome_event_id INT,
     outcome_type_id INT,
-    outcome_event_id INT PRIMARY KEY,
-    FOREIGN KEY (animal_id) REFERENCES Animal(animal_id),
-    FOREIGN KEY (outcome_type_id) REFERENCES Outcome_Type(outcome_type_id)
+    FOREIGN KEY (animal_id) REFERENCES animal(animal_id),
+    FOREIGN KEY (outcome_type_id) REFERENCES outcome_Type(outcome_type_id),
     FOREIGN KEY (outcome_event_id) REFERENCES outcome_event(outcome_event_id)
 );

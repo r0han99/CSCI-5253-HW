@@ -64,7 +64,10 @@ class etl:
         animal_table = ['animal_id', 'breed', 'color', 'name','date_of_birth','animal_type']
         outcome_table = ['outcome_type_id','outcome_type']
         outcome_event = ['outcome_event_id','datetime','sex_upon_outcome','outcome_subtype','animal_id','outcome_type', 'outcome_type_id']
-        data_colums_order = ['animal_id','outcome_type_id','outcome_event_id']
+        data_colums_order = ['animal_id','outcome_type','outcome_event_id']
+            
+
+        
 
 
         # re-ordering
@@ -84,6 +87,9 @@ class etl:
         outcome_mapper = dict(zip(outcomes['outcome_type'],outcomes['outcome_type_id']))
         outcome_events['outcome_type_id']= outcome_events['outcome_type'].map(outcome_mapper)
         outcome_events = outcome_events.drop('outcome_type', axis=1)
+
+        data["outcome_type_id"] = data['outcome_type'].map(outcome_mapper)
+        data = data.drop('outcome_type', axis=1)
 
 
         print('Data Transformed.')
@@ -115,7 +121,7 @@ class etl:
         animal.to_sql('animal', engine, if_exists='append', index=False)
         outcomes.to_sql('outcome_type', engine, if_exists='append', index=False)
         outcome_events.to_sql('outcome_event', engine, if_exists='append', index=False)
-        fact_table.to_sql('fact_table', engine, if_exists='replace', index=False)
+        fact_table.to_sql('fact_table', engine, if_exists='append', index=False)
 
         print('- Loading Data')
         print('--'*25)
