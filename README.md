@@ -74,7 +74,7 @@ csci-5253-hw-etl-1  |                     | |.|                  /./   | |
 csci-5253-hw-etl-1  |                     |.| |                 / /    | |
 csci-5253-hw-etl-1  |                     | | |                /./     |.|
 csci-5253-hw-etl-1  |                     ;_;_;              ,'_/      ;_|
-csci-5253-hw-etl-1  |                     -/_(              '--'      /,'   Extract-Transform-Load, v2.
+csci-5253-hw-etl-1  |                     -/_(              '--'      /,'   ETL-v2.
 csci-5253-hw-etl-1  | 
 
 
