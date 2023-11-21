@@ -30,21 +30,6 @@ POSTGRES_HOST = os.getenv('POSTGRES_HOST')
 DATABASE_URL = os.getenv('DATABASE_URL')
 
 
-'''
-
-
-URL="https://data.austintexas.gov/resource/9t4d-g238.json"
-YOUR_ACCESS_KEY="AKIAZKUHUNYSBK6XPTVB"
-YOUR_SECRET_KEY="Bf31iAqYPaHYNicudGAHaxxibpMtfoakdaXLl0KX"
-BUCKET_NAME="airflow-dcsc-bucket-1"
-POSTGRES_PORT="5432"
-POSTGRES_USER="airflow"
-POSTGRES_PASSWORD="ssrk-12345"
-POSTGRES_DB="postgres"
-POSTGRES_HOST="shelter-airflow.c4ar66xddoql.us-east-1.rds.amazonaws.com"
-DATABASE_URL = "postgresql+psycopg2://{}:{}@{}:{}/{}"
-'''
-
 DATABASE_URL = DATABASE_URL.format(POSTGRES_USER,POSTGRES_PASSWORD,POSTGRES_HOST,POSTGRES_PORT,POSTGRES_DB)
 
 
