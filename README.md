@@ -10,7 +10,7 @@ This repository holds all the future and current homework assignment files as pu
 
 ---
 
-### HW2 - Intructions to Run 
+### Lab03 Airflow -- Instructions to Run
 
 ##### Docker Compose Instantiation
 
@@ -21,70 +21,41 @@ Navigate inside the folder ( Make sure the `docker-compose.yml` is within the di
 In the **terminal/wsl**, run the following
 
 ```bash
-docker compose up --build
+docker compose up
 ```
 
 ---
 
-#### Expected Output
+#### Cloud Instantiation References - Proof of Execution 
 
-```
-csci-5253-hw-etl-1  | Etl Pipeline
-csci-5253-hw-etl-1  | --------------------------------------------------
-csci-5253-hw-etl-1  | Data Received!
-csci-5253-hw-etl-1  | --------------------------------------------------
-csci-5253-hw-etl-1  | Transforming Data.
-csci-5253-hw-etl-1  | - Converting datetime and date_of_birth to datetime objects and transforming them to the pattern mm/dd/yyyy
-csci-5253-hw-etl-1  | - Filling NA.
-csci-5253-hw-etl-1  | - Creating ID for Outcome type and Outcome Event Type.
-csci-5253-hw-etl-1  | - Dividing into Entities
-csci-5253-hw-etl-1  | Data Transformed.
-csci-5253-hw-etl-1  | --------------------------------------------------
-csci-5253-hw-etl-1  | Received transformed data.
-csci-5253-hw-etl-1  | --------------------------------------------------
-csci-5253-hw-etl-1  | - Firing up Postgres
-csci-5253-hw-etl-1  | - Connection Established.
-csci-5253-hw-etl-1  | - Loading Data
-csci-5253-hw-etl-1  | --------------------------------------------------
-csci-5253-hw-etl-1  | Data Load Completed.
-csci-5253-hw-etl-1  | 
-csci-5253-hw-etl-1  | 
-csci-5253-hw-etl-1  | 
-csci-5253-hw-etl-1  |         ,/  \.
-csci-5253-hw-etl-1  |        |(    )|
-csci-5253-hw-etl-1  |   \`-._:,\  /.;_,-'/
-csci-5253-hw-etl-1  |    `.\_`')(`/'_/,'
-csci-5253-hw-etl-1  |        )/`.,'\(
-csci-5253-hw-etl-1  |        |.    ,|
-csci-5253-hw-etl-1  |        (@)  (@)
-csci-5253-hw-etl-1  |         \`\ _('
-csci-5253-hw-etl-1  |          \._'; `.___...---..________...------._
-csci-5253-hw-etl-1  |           \   |   ,'   .  .     .       .     .`:.
-csci-5253-hw-etl-1  |            \`.' .  .         .   .   .     .   . \
-csci-5253-hw-etl-1  |             `.       .   .  \  .   .   ..::: .    ::
-csci-5253-hw-etl-1  |               \ .    .  .   ..::::::::''  ':    . ||
-csci-5253-hw-etl-1  |                \   `. :. .:'            \  '. .   ;;
-csci-5253-hw-etl-1  |                 `._  \ ::: ;           _,\  :.  |/(
-csci-5253-hw-etl-1  |                    `.`::: /--....--- \ `. :. :`\`   '
-csci-5253-hw-etl-1  |                     | |:':               \  `. :.'  '
-csci-5253-hw-etl-1  |                     | |' ;                \  (\  .'  (*)
-csci-5253-hw-etl-1  |                     | |.:                  \  \`.  :
-csci-5253-hw-etl-1  |                     |.| |                   ) /  :.|
-csci-5253-hw-etl-1  |                     | |.|                  /./   | |
-csci-5253-hw-etl-1  |                     |.| |                 / /    | |
-csci-5253-hw-etl-1  |                     | | |                /./     |.|
-csci-5253-hw-etl-1  |                     ;_;_;              ,'_/      ;_|
-csci-5253-hw-etl-1  |                     -/_(              '--'      /,'   ETL-v2.
-csci-5253-hw-etl-1  | 
+### Airflow Dag Represenation
+
+![Example Image](assets/airflow-status.png)
+
+## DAGs
+
+<img width="1220" alt="Screenshot 2023-11-20 at 6 54 05 PM" src="https://github.com/r0han99/CSCI-5253-HW/assets/45916202/eb2c7ff7-70b8-4048-a718-e81eefea3384">
+
+## Storing Data on to the Cloud - S3 Bucket
+
+![Example Image](assets/s3-bucket.png)
+
+## Cloud Relational Database - Amazon RDS
+
+![Example Image](assets/data-warehouse.png)
+
+## Connection Test to the Cloud RDS through DBeaver
+
+<img width="1466" alt="Screen Shot 2023-11-20 at 6 59 46 PM" src="https://github.com/r0han99/CSCI-5253-HW/assets/45916202/968955e1-2ba2-42c6-8cfc-a3017f3062c7">
+
+## Succesful Data Loading through the ETL process
+
+<img width="1470" alt="Screen Shot 2023-11-20 at 6 58 57 PM" src="https://github.com/r0han99/CSCI-5253-HW/assets/45916202/9e01edaf-ae33-4bb3-ba6c-801f79367be7">
 
 
-```
+##### Note ~ Edit Credentials 
 
----
-
-##### Note ~ Docker Compose Functionality
-
-Docker compose file maps the port 5432 from the container image to the local computer's port 5432. Connection to the database and Load functionality can be validated by manually connecting to the database by using the credentials specified under `credentials.txt`  through any database management tool like `DBeaver`. 
+In order to execute the lab-3 code, nagivate to `/dags/secrets.env` replace the credentials items with your own before running the `docker-compose.yml`
 
 ----
 
