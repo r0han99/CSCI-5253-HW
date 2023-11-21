@@ -55,7 +55,8 @@ docker compose up
 
 ##### Note ~ Edit Credentials 
 
-In order to execute the lab-3 code, nagivate to `/dags/secrets.env` replace the credentials items with your own before running the `docker-compose.yml`
+In order to execute the lab-3 code, nagivate to `/dags/secrets.env` replace the credentials items with your own before running the `docker-compose.yml`.
+And, in order establish the relationships between the tables please run the `init.sql` file. 
 
 ----
 
