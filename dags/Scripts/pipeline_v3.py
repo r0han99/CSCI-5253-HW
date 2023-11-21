@@ -17,7 +17,6 @@ load_dotenv("./dags/secrets.env")
 
 
 
-
 URL = os.getenv('URL')
 YOUR_ACCESS_KEY = os.getenv('YOUR_ACCESS_KEY')
 YOUR_SECRET_KEY = os.getenv('YOUR_SECRET_KEY')
@@ -33,7 +32,7 @@ DATABASE_URL = os.getenv('DATABASE_URL')
 DATABASE_URL = DATABASE_URL.format(POSTGRES_USER,POSTGRES_PASSWORD,POSTGRES_HOST,POSTGRES_PORT,POSTGRES_DB)
 
 
-def retrieve_data():
+def extract():
     # AWS S3 client initialization
     s3 = boto3.client(
         's3',
@@ -53,8 +52,8 @@ def retrieve_data():
        'outcome_type', 'animal_type', 'sex_upon_outcome', 'age_upon_outcome',
        'breed', 'color', 'outcome_subtype']]
 
-    # Check for existing data in 'Old_Data' folder
-    old_data_key = 'Old_Data/austin_animal_outcomes.csv'
+    # Check for existing data in 'old_Data' folder
+    old_data_key = 'old_data/austin_animal_outcomes.csv'
     try:
         old_obj = s3.get_object(Bucket=BUCKET_NAME, Key=old_data_key)
         df_old = pd.read_csv(io.BytesIO(old_obj['Body'].read()))
@@ -80,7 +79,7 @@ def retrieve_data():
     s3.put_object(Bucket=BUCKET_NAME, Key='raw_data/austin_animal_outcomes.csv', Body=file_content)
 
     # Update 'Old_Data' with current data
-    logging.info("Updating 'Old_Data' with current data...")
+    logging.info("Updating 'old_data' with current data...")
     csv_buffer_old = io.StringIO()
     df_new.to_csv(csv_buffer_old, index=False)
     old_file_content = csv_buffer_old.getvalue().encode()
@@ -90,7 +89,7 @@ def retrieve_data():
 
 
 
-def transform_data():
+def transform():
     s3 = boto3.client(
         's3',
         aws_access_key_id=YOUR_ACCESS_KEY,
@@ -106,7 +105,7 @@ def transform_data():
     # Perform transformations
     data = df.copy() # Example transformation
 
-#################################################################################
+    # Transormations
 
     data.fillna('Not Recorded',inplace=True)
     data['outcome_type_id'] = data.index + 1
@@ -147,8 +146,7 @@ def transform_data():
     data = data.drop('outcome_type', axis=1)
 
   
-#################################################################################
-
+    # Uploading to the cloud
 
     # Upload transformed data back to S3
     out_buffer = io.StringIO()
@@ -173,9 +171,9 @@ def transform_data():
     
 
 
+# loading into Redshift
 
-
-def load_data():
+def load():
 
     # Initialize S3 client
     s3 = boto3.client(
