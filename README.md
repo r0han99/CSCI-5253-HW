@@ -30,15 +30,16 @@ docker compose up
 
 ### Airflow Dag Represenation
 
-![Example Image](assets/airflow-status.png)
+![image](https://github.com/r0han99/CSCI-5253-HW/assets/45916202/c20aeb83-3085-4f99-ae43-acb4c8bdb963)
 
 ## DAGs
 
-<img width="1220" alt="Screenshot 2023-11-20 at 6 54 05 PM" src="https://github.com/r0han99/CSCI-5253-HW/assets/45916202/eb2c7ff7-70b8-4048-a718-e81eefea3384">
+![image](https://github.com/r0han99/CSCI-5253-HW/assets/45916202/30d9cc87-e97e-49b3-b92c-9c6608257d25)
+
 
 ## Storing Data on to the Cloud - S3 Bucket
 
-![Example Image](assets/s3-bucket.png)
+<img width="1616" alt="image" src="https://github.com/r0han99/CSCI-5253-HW/assets/45916202/812f1a08-689c-43b3-82ff-9909be97d991">
 
 ## Cloud Relational Database - Amazon RDS
 
