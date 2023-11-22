@@ -36,26 +36,26 @@ dag = DAG('Shelter_Dag_cloud',
           schedule_interval=timedelta(days=1))
 
 
-retrieve_data_task = PythonOperator(
+extract_task = PythonOperator(
     task_id='extract',
     python_callable=extract,
     dag=dag)
 
 
 
-transform_data_task = PythonOperator(
+transform_task = PythonOperator(
     task_id='transform',
     python_callable=transform,
     dag=dag)
 
 
-load_data_task = PythonOperator(
+load_task = PythonOperator(
     task_id='load',
     python_callable=load,
     dag=dag)
 
 
 
-retrieve_data_task >> transform_data_task >> load_data_task
+extract_task >> transform_task >> load_task
 
 
