@@ -17945,3 +17945,32 @@ File Path                                 PID    Runtime      # DAGs    # Errors
 /opt/airflow/dags/Scripts/pipeline_v3.py                           0           0  0.35s           2023-11-22T05:23:50
 /opt/airflow/dags/DAG.py                                           1           0  0.40s           2023-11-22T05:23:50
 ================================================================================
+[2023-11-22T05:24:49.559+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/Scripts/pipeline_v3.py                           0           0  0.33s           2023-11-22T05:24:21
+/opt/airflow/dags/DAG.py                                           1           0  0.38s           2023-11-22T05:24:21
+================================================================================
+[2023-11-22T05:25:20.427+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/Scripts/pipeline_v3.py                           0           0  0.37s           2023-11-22T05:24:52
+/opt/airflow/dags/DAG.py                                           1           0  0.41s           2023-11-22T05:24:52
+================================================================================
+[2023-11-22T05:25:22.500+0000] {manager.py:1025} ERROR - Processor for /opt/airflow/dags/DAG.py exited with return code 1.
+[2023-11-22T05:25:22.503+0000] {manager.py:1025} ERROR - Processor for /opt/airflow/dags/Scripts/pipeline_v3.py exited with return code 1.
+[2023-11-22T05:25:50.948+0000] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                 PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/DAG.py                                           0          -1  0.03s           2023-11-22T05:25:22
+/opt/airflow/dags/Scripts/pipeline_v3.py                           0          -1  0.02s           2023-11-22T05:25:22
+================================================================================
